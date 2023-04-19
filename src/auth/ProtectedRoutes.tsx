@@ -1,10 +1,9 @@
 import React from "react";
 import {Outlet, Navigate} from "react-router-dom";
-import {selectCurrentToken} from "./authSlice";
-import {useSelector} from "react-redux";
+import {useAppSelector} from "../app/hooks";
 
 function ProtectedRoutes(): JSX.Element {
-  const token = useSelector(selectCurrentToken);
+  const token = useAppSelector((state) => state.auth.token);
   return token === "valid_token" ? <Outlet /> : <Navigate to="/" />;
 }
 

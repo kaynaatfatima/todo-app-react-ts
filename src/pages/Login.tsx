@@ -3,7 +3,7 @@ import useTogglePassword from "../hooks/useTogglePassword";
 import {useNavigate} from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../app/hooks";
 import {ICredentials} from "../interfaces";
-import {selectCurrentToken, setCredentials} from "../auth/authSlice";
+import {setCredentials} from "../auth/authSlice";
 
 const Login: React.FC = () => {
   const [passwordInputType, ToggleIcon] = useTogglePassword();
