@@ -32,10 +32,10 @@ const Modal: FC<IModalProps> = ({
           onClick={(e) => e.stopPropagation()}>
           <div className="modal-content">
             <div className="modal-header ">
-              <h1 className="modal-title">🟧 {title}</h1>
+              <b className="modal-title">🟧 {title}</b>
               <button
                 type="button"
-                className="btn btn-secondary"
+                className="btn-sm btn-hover-shine"
                 onClick={onClose}
                 aria-label="Close">
                 X
@@ -45,7 +45,7 @@ const Modal: FC<IModalProps> = ({
             <div className="modal-footer">
               <button
                 type="button"
-                className="btn btn-secondary"
+                className="btn shadow btn-hover-shine btn-secondary"
                 onClick={onClose}>
                 Close
               </button>
@@ -53,7 +53,7 @@ const Modal: FC<IModalProps> = ({
                 <button
                   onClick={action}
                   type="button"
-                  className={`btn btn-wide text-white ${actionClass}`}>
+                  className={`btn btn-wide text-white btn-hover-shine ${actionClass}`}>
                   {actionName}
                 </button>
               )}

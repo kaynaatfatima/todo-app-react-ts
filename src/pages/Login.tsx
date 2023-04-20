@@ -1,9 +1,10 @@
 import React, {useState, useEffect} from "react";
 import useTogglePassword from "../hooks/useTogglePassword";
 import {useNavigate} from "react-router-dom";
-import { useAppDispatch, useAppSelector } from "../app/hooks";
+import {useAppDispatch, useAppSelector} from "../app/hooks";
 import {ICredentials} from "../interfaces";
 import {setCredentials} from "../auth/authSlice";
+import ErrorAlert from "../components/ErrorAlert";
 
 const Login: React.FC = () => {
   const [passwordInputType, ToggleIcon] = useTogglePassword();
@@ -29,11 +30,12 @@ const Login: React.FC = () => {
       password: password,
     };
     dispatch(setCredentials(creds));
-    if(token !== "valid_token"){
-      setError("Invalid Credentials")
+    if (token !== "valid_token") {
+      setError("Invalid Credentials");
     }
   };
-  const handlechange = (event: React.ChangeEvent<HTMLInputElement>): void => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
+    setError("");
     if (event.target.name === "password") {
       setPassword(event.target.value);
     } else {
@@ -44,14 +46,14 @@ const Login: React.FC = () => {
   return (
     <>
       <div className="loginPage">
-        <b>Email: root@gmail.com password: root</b>
-        <form className="loginForm">
+        <h3 className="text-white">Email: root@gmail.com password: root</h3>
+        <form className="loginForm shadow">
           <div>
             <input
               name="email"
               id="email"
               value={email}
-              onChange={handlechange}
+              onChange={handleChange}
               type="email"
               className="form-control"
               placeholder="Email"
@@ -63,24 +65,28 @@ const Login: React.FC = () => {
               name="password"
               id="password"
               value={password}
-              onChange={handlechange}
+              onChange={handleChange}
               type={passwordInputType}
               className="form-control"
               placeholder="Password"
               required
             />
-            <span className="toggle-password-icon">{ToggleIcon}</span>
+            {password && (
+              <span className="toggle-password-icon">{ToggleIcon}</span>
+            )}
           </div>
           <button
             type="submit"
-            className="btn btn-primary"
+            className="btn shadow btn-hover-shine btn-primary"
             onClick={handleSubmit}>
             {" "}
             Login
           </button>
-          {error && <b className="error-red">{error}</b>}
         </form>
       </div>
+      {error && (
+        <ErrorAlert message={error} closeNotification={() => setError("")} />
+      )}
     </>
   );
 };

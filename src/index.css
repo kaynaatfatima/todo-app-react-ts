@@ -4,18 +4,21 @@
   flex-direction: column;
   width: 100vw;
   height: 100vh;
-  font-family: "Century Gothic" !important;
+}
+
+html {
+  font-family: 'Century Gothic' !important;
 }
 
 body {
   margin: 0%;
   padding: 0%;
-  background-color: #f2f2f2;
+  background-color: #1f1f1f;
 }
 
 .header {
   flex: 30%;
-  background-color: #ff934b;
+  background-color: #0F0F0F;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -50,7 +53,7 @@ body {
   border: none;
   border-bottom-right-radius: 8px;
   border-top-right-radius: 8px;
-  background-color: #1d1f21;
+  background-color: #353535;
   color: white;
   padding-left: 10px;
   cursor: pointer;
@@ -88,7 +91,7 @@ body {
   height: 100%;
   font-size: 18px;
   border-right: none;
-  background-color: #ff6600;
+  background-color: #00999b;
 }
 
 .content > span:first-child {
@@ -100,7 +103,7 @@ body {
   flex: 20%;
   height: 100%;
   border: none;
-  background-color: #1d1f21;
+  background-color: #353535;
   border-top-right-radius: 8px;
   border-bottom-right-radius: 8px;
   color: white;
@@ -109,7 +112,9 @@ body {
 
 .error-red {
   position: fixed;
-  bottom: 10px;
+  bottom: 40px;
+  left: 50%;
+  transform: translate(-50%, 50%);
   padding: 8px 15px;
   border-radius: 0.25rem;
   background-color: rgb(255, 50, 50);
@@ -118,7 +123,9 @@ body {
 
 .error-yellow {
   position: fixed;
-  bottom: 10px;
+  bottom: 40px;
+  left: 50%;
+  transform: translate(-50%, 50%);
   padding: 8px 15px;
   border-radius: 0.25rem;
   background-color: rgb(224, 255, 50);
@@ -133,7 +140,7 @@ body {
   padding: 2px 6px;
   align-items: center;
   justify-content: center;
-  margin-left: 6px;
+  margin-left: 1.5rem;
   cursor: pointer;
 }
 .error-red > .close {
@@ -144,7 +151,7 @@ body {
   padding: 2px 6px;
   align-items: center;
   justify-content: center;
-  margin-left: 6px;
+  margin-left: 1.5rem;
   cursor: pointer;
 }
 
@@ -227,14 +234,14 @@ body {
   justify-content: space-between;
   padding: 1rem 1rem;
   border-bottom: 1px solid #e9ecef;
-  border-top-left-radius: 0.3rem;
+  border-top-left-radius: 0.3rem;.clode
   border-top-right-radius: 0.3rem;
 }
 .modal-header .close {
   padding: 1rem 1rem;
 }
 .modal-title {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
 }
 .modal-body {
   position: relative;
@@ -284,13 +291,18 @@ body {
   padding: 5px 10px;
   border-radius: 0.25rem;
   cursor: pointer;
+  line-height: 1.6rem;
+  margin-top: 0.8rem !important;
+  width: 5rem;
+  font-weight: 500;
 }
 .btn-primary {
-  background-color: #ff6600;
+  background-color: #00999b;
   color: white;
+  
 }
 .btn-secondary {
-  background-color: #1d1f21;
+  background-color: #353535;
   color: white;
 }
 .loadingPage {
@@ -315,13 +327,17 @@ body {
   flex-direction: column;
   background-color: white;
   padding: 3rem;
-  border: 2px solid #1d1f21;
-  border-radius: 0.25rem;
+  border: 2px solid #0F0F0F;
+  border-radius: 0.4rem;
   margin-top: 2rem;
+  background-color: #0F0F0F;
 }
-.loginForm * {
-  margin-top: 0.3rem;
-  margin-right: 2rem;
+.loginForm > * {
+  margin-top: 0.5rem;
+}
+
+.loginForm div {
+  margin-right: 2rem !important;
 }
 
 .passwordInput{
@@ -348,4 +364,42 @@ body {
   background-clip: padding-box;
   border: 1px solid #ced4da;
   border-radius: 0.25rem;
+}
+.shadow {
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+}
+.btn-focus {
+  background-color: #1f1f1f !important;
+}
+.text-white {
+  color: white;
+}
+.btn-sm {
+  background-color: #353535;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 0.25rem;
+  cursor: pointer;
+}
+
+.btn-hover-shine {
+  position: relative;
+}
+.btn-hover-shine:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.4);
+  -webkit-transition: none;
+  -moz-transition: none;
+  transition: none;
+}
+.btn-hover-shine:hover:after {
+  width: 120%;
+  background-color: rgba(255, 255, 255, 0);
+  transition: all 0.4s ease-in-out;
 }
