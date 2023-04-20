@@ -8,7 +8,7 @@ interface ITodoProps {
 }
 
 const Todo: FC<ITodoProps> = ({task, completeTask}) => {
-  const [showModal, setShowModal] = useState<boolean>(false);
+  
   return (
     <div className="task">
       <div className="content">
@@ -17,22 +17,11 @@ const Todo: FC<ITodoProps> = ({task, completeTask}) => {
       </div>
       <button
         onClick={() => {
-          setShowModal(true)
+          completeTask(task.taskName)
         }}>
         x
       </button>
-      {showModal && (
-        <Modal
-          open={showModal}
-          onClose={() => setShowModal(false)}
-          title={task.taskName}
-          action={()=>completeTask(task.taskName)}
-          actionName="Delete"
-          actionClass="btn-primary"
-          size="sm">
-          Do you want to delete this task? 💀
-        </Modal>
-      )}
+      
     </div>
   );
 };

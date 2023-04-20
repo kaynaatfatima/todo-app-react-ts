@@ -33,7 +33,7 @@ const Login: React.FC = () => {
       setError("Invalid Credentials")
     }
   };
-  const handleChnage = (event: React.ChangeEvent<HTMLInputElement>): void => {
+  const handlechange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     if (event.target.name === "password") {
       setPassword(event.target.value);
     } else {
@@ -51,7 +51,7 @@ const Login: React.FC = () => {
               name="email"
               id="email"
               value={email}
-              onChange={handleChnage}
+              onChange={handlechange}
               type="email"
               className="form-control"
               placeholder="Email"
@@ -63,7 +63,7 @@ const Login: React.FC = () => {
               name="password"
               id="password"
               value={password}
-              onChange={handleChnage}
+              onChange={handlechange}
               type={passwordInputType}
               className="form-control"
               placeholder="Password"

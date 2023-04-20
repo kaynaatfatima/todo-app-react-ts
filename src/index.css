@@ -232,10 +232,9 @@ body {
 }
 .modal-header .close {
   padding: 1rem 1rem;
-  margin: -1rem -1rem -1rem auto;
 }
 .modal-title {
-  line-height: 1.5;
+  font-size: 1.5rem;
 }
 .modal-body {
   position: relative;

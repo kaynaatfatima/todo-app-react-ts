@@ -32,7 +32,7 @@ const Modal: FC<IModalProps> = ({
           onClick={(e) => e.stopPropagation()}>
           <div className="modal-content">
             <div className="modal-header ">
-              <h5 className="modal-title">🟧 {title}</h5>
+              <h1 className="modal-title">🟧 {title}</h1>
               <button
                 type="button"
                 className="btn btn-secondary"

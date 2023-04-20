@@ -1,6 +1,7 @@
 import React, {useState, useEffect, FC} from 'react'
 import { ITask } from '../interfaces';
 import Todo from '../components/Todo';
+import Modal from '../components/Modal';
 
 const Home: FC = () => {
     const [task, setTask] = useState<string>("");
@@ -8,8 +9,10 @@ const Home: FC = () => {
     const [todoList, setTodoList] = useState<ITask[]>([]);
     const [error, setError] = useState<string | null>();
     const [errorColor, setErrorColor] = useState<"yellow" | "red">("red");
+    const [showModal, setShowModal] = useState<boolean>(false);
+    const [taskNameToDelete, setShowTaskNameToDelete] = useState<string>("");
 
-    const handleChnage = (event: React.ChangeEvent<HTMLInputElement>): void => {
+    const handlechange = (event: React.ChangeEvent<HTMLInputElement>): void => {
       setError("");
       if (event.target.name === "task") {
         setTask(event.target.value);
@@ -44,12 +47,18 @@ const Home: FC = () => {
       setHours(0);
     };
 
-    const completeTask = (taskNameToDelete: string): void => {
+    const showDeleteModal = (taskNameToDelete: string): void => {
+      setShowModal(true)
+      setShowTaskNameToDelete(taskNameToDelete);
+    }
+
+    const completeTask = (): void => {
       setTodoList(
         todoList.filter((task) => {
           return task.taskName != taskNameToDelete;
         })
       );
+      setShowModal(false)
     };
 
     const [timeoutId, setTimeoutId] = useState<number | undefined>();
@@ -102,7 +111,7 @@ const Home: FC = () => {
             id=""
             placeholder="Task"
             value={task}
-            onChange={handleChnage}
+            onChange={handlechange}
             required
           />
           <input
@@ -111,7 +120,7 @@ const Home: FC = () => {
             id=""
             value={hours}
             placeholder="Required hours"
-            onChange={handleChnage}
+            onChange={handlechange}
             required
           />
         </div>
@@ -119,7 +128,7 @@ const Home: FC = () => {
       </div>
       <div className="todoList">
         {todoList.map((task: ITask, key: number) => {
-          return <Todo key={key} task={task} completeTask={completeTask} />;
+          return <Todo key={key} task={task} completeTask={showDeleteModal} />;
         })}
       </div>
       {error && (
@@ -133,6 +142,18 @@ const Home: FC = () => {
             x
           </span>
         </div>
+      )}
+      {showModal && (
+        <Modal
+          open={showModal}
+          onClose={() => setShowModal(false)}
+          title={`Delete task: ${taskNameToDelete}`}
+          action={() => completeTask()}
+          actionName="Delete"
+          actionClass="btn-primary"
+          size="md">
+          Are you sure you want to delete this task? ❌
+        </Modal>
       )}
     </div>
   );
